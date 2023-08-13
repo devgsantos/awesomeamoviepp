@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">HQAwesomeApp</string>
+    <string name="app_name">AwesomeMovieApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="movie_image_content">Nome do Filme</string>
+    <string name="movie_title_placeholder">Nome do Filme</string>
+    <string name="movie_description_placeholder">Texto de descrição do Filme</string>
 </resources>

@@ -1,12 +1,10 @@
-package com.santos.hqawesomeapp
+package com.santos.awesomemovieapp
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.viewbinding.ViewBindings
-import com.santos.hqawesomeapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

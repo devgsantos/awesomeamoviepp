@@ -7,16 +7,16 @@
 
     <fragment
         android:id="@+id/HQFragment"
-        android:name="com.santos.hqawesomeapp.HQFragment"
+        android:name="com.santos.awesomemovieapp.MovieFragment"
         android:label="fragment_item_list"
         tools:layout="@layout/fragment_item_list" >
         <action
-            android:id="@+id/action_HQFragment_to_HQDetailsFragment"
-            app:destination="@id/HQDetailsFragment" />
+            android:id="@+id/action_HQFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/HQDetailsFragment"
-        android:name="com.santos.hqawesomeapp.HQDetailsFragment"
-        android:label="fragment_h_q_details"
-        tools:layout="@layout/fragment_h_q_details" />
+        android:id="@+id/detailsFragment"
+        android:name="com.santos.awesomemovieapp.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>

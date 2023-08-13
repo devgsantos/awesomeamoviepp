@@ -1,4 +1,4 @@
-package com.santos.hqawesomeapp.placeholder
+package com.santos.awesomemovieapp.placeholder
 
 import java.util.ArrayList
 import java.util.HashMap

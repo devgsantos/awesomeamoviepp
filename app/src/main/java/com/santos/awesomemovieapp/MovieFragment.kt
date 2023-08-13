@@ -1,4 +1,4 @@
-package com.santos.hqawesomeapp
+package com.santos.awesomemovieapp
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,16 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
-import com.santos.hqawesomeapp.placeholder.PlaceholderContent
+import com.santos.awesomemovieapp.placeholder.PlaceholderContent
 
 /**
  * A fragment representing a list of Items.
  */
-class HQFragment : Fragment() {
+class MovieFragment : Fragment(), MovieItemListener {
 
     private var columnCount = 1
-    private val viewModel by navGraphViewModels<HQViewModel>(R.id.hq_graph){defaultViewModelProviderFactory}
+    private val viewModel by navGraphViewModels<MovieViewModel>(R.id.hq_graph){defaultViewModelProviderFactory}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +41,14 @@ class HQFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyhqRecyclerViewAdapter(PlaceholderContent.ITEMS)
+                adapter = MyhqRecyclerViewAdapter(PlaceholderContent.ITEMS, this@MovieFragment)
             }
         }
         return view
+    }
+
+    override fun onItemSelected(position: Int) {
+        findNavController().navigate(R.id.detailsFragment)
     }
 
     companion object {
@@ -54,10 +59,11 @@ class HQFragment : Fragment() {
         // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
-            HQFragment().apply {
+            MovieFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }
             }
     }
+
 }

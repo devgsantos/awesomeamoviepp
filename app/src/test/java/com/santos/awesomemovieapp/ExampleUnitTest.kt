@@ -1,4 +1,4 @@
-package com.santos.hqawesomeapp
+package com.santos.awesomemovieapp
 
 import org.junit.Test
 
