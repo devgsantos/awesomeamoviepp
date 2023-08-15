@@ -18,7 +18,7 @@ import com.santos.awesomemovieapp.placeholder.PlaceholderContent
 class MovieFragment : Fragment(), MovieItemListener {
 
     private var columnCount = 1
-    private val viewModel by navGraphViewModels<MovieViewModel>(R.id.hq_graph){defaultViewModelProviderFactory}
+    private val viewModel by navGraphViewModels<MovieViewModel>(R.id.movie_graph){defaultViewModelProviderFactory}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +41,14 @@ class MovieFragment : Fragment(), MovieItemListener {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyhqRecyclerViewAdapter(PlaceholderContent.ITEMS, this@MovieFragment)
+                adapter = MyMovieRecyclerViewAdapter(PlaceholderContent.ITEMS, this@MovieFragment)
             }
         }
         return view
     }
 
     override fun onItemSelected(position: Int) {
-        findNavController().navigate(R.id.detailsFragment)
+        findNavController().navigate(R.id.movieDetailsFragment)
     }
 
     companion object {
