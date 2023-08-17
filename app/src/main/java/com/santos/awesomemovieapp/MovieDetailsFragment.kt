@@ -12,7 +12,7 @@ import com.santos.awesomemovieapp.databinding.FragmentMovieDetailsBinding
 class MovieDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieDetailsBinding
-    private val viewModel by navGraphViewModels<MovieViewModel>(R.navigation.movie_graph)
+    private val viewModel by navGraphViewModels<MovieViewModel>(R.id.movie_graph) { defaultViewModelProviderFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +23,8 @@ class MovieDetailsFragment : Fragment() {
             container,
             false)
         binding.lifecycleOwner = this
+
+        //TODO CORRIGIR O ERRO AQUI
         binding.movieViewModel = viewModel
         return binding.root
     }
