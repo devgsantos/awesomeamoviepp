@@ -7,7 +7,6 @@ import com.santos.awesomemovieapp.MovieDetails.MovieDetails
 import com.santos.awesomemovieapp.MovieHome.MovieService
 import com.santos.awesomemovieapp.data.Movie
 import com.santos.awesomemovieapp.data.MovieResponse
-import com.santos.awesomemovieapp.placeholder.PlaceholderContent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
