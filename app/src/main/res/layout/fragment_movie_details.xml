@@ -13,7 +13,7 @@
         android:id="@+id/fragment_movie_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MovieDetailsFragment">
+        tools:context=".MovieDetails.MovieDetailsFragment">
 
         <TextView
             android:id="@+id/movie_details_title"
@@ -22,7 +22,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
-            android:text="@{movieViewModel.loadMoviedetails().title}"
+            android:text="@{movieViewModel.moviewDetailsLiveData.title}"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="50dp"
-            android:text="@{movieViewModel.loadMoviedetails().content}"
+            android:text="@{movieViewModel.moviewDetailsLiveData.content}"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"

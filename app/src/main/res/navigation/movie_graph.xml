@@ -6,7 +6,7 @@
     app:startDestination="@id/movieFragment">
     <fragment
         android:id="@+id/movieFragment"
-        android:name="com.santos.awesomemovieapp.MovieFragment"
+        android:name="com.santos.awesomemovieapp.MovieHome.MovieFragment"
         android:label="fragment_item_list"
         tools:layout="@layout/fragment_item_list" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
-        android:name="com.santos.awesomemovieapp.MovieDetailsFragment"
+        android:name="com.santos.awesomemovieapp.MovieDetails.MovieDetailsFragment"
         android:label="fragment_movie_details"
         tools:layout="@layout/fragment_movie_details" />
 </navigation>

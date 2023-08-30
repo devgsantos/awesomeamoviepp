@@ -1,10 +1,9 @@
-package com.santos.awesomemovieapp
+package com.santos.awesomemovieapp.MovieHome
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
-import com.santos.awesomemovieapp.placeholder.PlaceholderContent.PlaceholderItem
+import com.santos.awesomemovieapp.data.Movie
 import com.santos.awesomemovieapp.databinding.FragmentItemBinding
 
 interface MovieItemListener {
@@ -12,9 +11,15 @@ interface MovieItemListener {
 }
 
 class MyMovieRecyclerViewAdapter(
-    private val values: List<PlaceholderItem>,
     private val listener: MovieItemListener
 ) : RecyclerView.Adapter<MyMovieRecyclerViewAdapter.ViewHolder>() {
+
+    private var values: List<Movie> = ArrayList()
+
+    fun updateData(movieList: List<Movie>) {
+        values = movieList
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -40,7 +45,7 @@ class MyMovieRecyclerViewAdapter(
 
     inner class ViewHolder(private val binding: FragmentItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val view  = binding.root
-        fun bindItem(item: PlaceholderItem) {
+        fun bindItem(item: Movie) {
             binding.movieItem = item
             binding.executePendingBindings()
         }

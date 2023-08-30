@@ -1,4 +1,4 @@
-package com.santos.awesomemovieapp
+package com.santos.awesomemovieapp.MovieDetails
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.navGraphViewModels
+import com.santos.awesomemovieapp.MovieViewModel
+import com.santos.awesomemovieapp.R
 import com.santos.awesomemovieapp.databinding.FragmentMovieDetailsBinding
 
 
@@ -24,7 +26,6 @@ class MovieDetailsFragment : Fragment() {
             false)
         binding.lifecycleOwner = this
 
-        //TODO CORRIGIR O ERRO AQUI
         binding.movieViewModel = viewModel
         return binding.root
     }
