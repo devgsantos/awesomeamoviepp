@@ -108,19 +108,6 @@ class MovieFragment : Fragment(), MovieItemListener {
     }
 
     fun initObservers() {
-        viewModel.dataStateLiveData.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                DataState.LOADING -> {
-                    Toast.makeText(requireContext(), "Carregando dados", Toast.LENGTH_LONG).show()
-                }
-                DataState.SUCCESS -> {
-                    Toast.makeText(requireContext(), "Dado carregados", Toast.LENGTH_SHORT).show()
-                }
-                DataState.ERROR -> {
-                    Toast.makeText(requireContext(), "Falha no carregamento", Toast.LENGTH_LONG).show()
-                }
-            }
-        })
 
         viewModel.moviewListLiveData.observe(viewLifecycleOwner, Observer {
             it?.let{

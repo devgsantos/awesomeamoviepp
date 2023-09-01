@@ -9,8 +9,8 @@ interface MovieService {
 
     @GET("now_playing")
     fun getMoviesList(
-        @Query("api_key") apikey: String,
-        @Query("page") page: String
+        @Query("page") page: String,
+        @Query("api_key") apikey: String
     ): Call<MovieResponse>
 
     @GET("now_playing")

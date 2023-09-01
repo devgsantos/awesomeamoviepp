@@ -46,7 +46,6 @@ class MovieViewModel: ViewModel() {
 
     fun getMovieData() {
         val page = 1
-        val input = "${ApiCredentials.apiKey}${page}"
         movieService.getMoviesList(page.toString(), ApiCredentials.apiKey)
             .enqueue(object: Callback<MovieResponse>{
                 override fun onResponse(
@@ -54,7 +53,7 @@ class MovieViewModel: ViewModel() {
                     response: Response<MovieResponse>
                 ) {
                     if (response.isSuccessful) {
-                        _movieListLiveData.postValue(response.body()?.container)
+                        _movieListLiveData.postValue(response.body()?.results)
                         _dataStateLiveData.postValue(DataState.SUCCESS)
                     }
                     _dataStateLiveData.postValue(DataState.SUCCESS)
