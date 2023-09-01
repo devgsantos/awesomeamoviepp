@@ -7,10 +7,6 @@ import com.santos.awesomemovieapp.MovieDetails.MovieDetails
 import com.santos.awesomemovieapp.MovieHome.MovieService
 import com.santos.awesomemovieapp.data.Movie
 import com.santos.awesomemovieapp.data.MovieResponse
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.delay
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
