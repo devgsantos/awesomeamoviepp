@@ -5,4 +5,5 @@
     <string name="movie_image_content">Nome do Filme</string>
     <string name="movie_title_placeholder">Nome do Filme</string>
     <string name="movie_description_placeholder">Texto de descrição do Filme</string>
+    <string name="error_msg">Falha ao carregar. Tente novamente mais tarde.</string>
 </resources>

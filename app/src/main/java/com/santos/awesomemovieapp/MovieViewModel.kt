@@ -61,12 +61,12 @@ class MovieViewModel: ViewModel() {
                     if (response.isSuccessful) {
                         _movieListLiveData.postValue(response.body()?.results)
                         _dataStateLiveData.postValue(DataState.SUCCESS)
+                    } else {
+                        _dataStateLiveData.postValue(DataState.ERROR)
                     }
-                    _dataStateLiveData.postValue(DataState.SUCCESS)
                 }
 
                 override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-                    _dataStateLiveData.postValue(DataState.ERROR)
                 }
 
             })

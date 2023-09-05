@@ -3,7 +3,6 @@ package com.santos.awesomemovieapp.movieHome
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,42 +32,21 @@ class MovieFragment : Fragment(), MovieItemListener {
     private val viewModel by navGraphViewModels<MovieViewModel>(R.id.movie_graph){defaultViewModelProviderFactory}
     lateinit var binding: FragmentItemListBinding
 
-    private var permissionResultLauncher: ActivityResultLauncher<String> =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-            when {
-                granted -> {
-                    // Usuário aceitou
-                }
-                !shouldShowRequestPermissionRationale(Manifest.permission.CAMERA) -> {
-                    view?.let {
-                        Snackbar.make(
-                            it,
-                            "Precisamos da permissão de uso da câmera.",
-                            Snackbar.LENGTH_INDEFINITE
-                        ).setAction("Pedir permissão", {
-                            val intent = Intent()
-                            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                            val uri = Uri.fromParts("package", requireActivity().packageName, null)
-                            intent.data = uri
-                            startActivity(intent)
-                        }).show()
-                    }
-                }
-                else -> {}
-            }
-
-        }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentItemListBinding.inflate(inflater)
-        val view = binding.root as RecyclerView
+
+        val view = binding.root
+        val recycleView = binding.list
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
         adapter = MyMovieRecyclerViewAdapter(this)
 
-        view.apply {
+        recycleView.apply {
             this.adapter = this@MovieFragment.adapter
             this.layoutManager = LinearLayoutManager(context)
         }
@@ -124,4 +102,30 @@ class MovieFragment : Fragment(), MovieItemListener {
 //        findNavController().navigate(R.id.movieDetailsFragment)
 
     }
+
+    private var permissionResultLauncher: ActivityResultLauncher<String> =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            when {
+                granted -> {
+                    // Usuário aceitou
+                }
+                !shouldShowRequestPermissionRationale(Manifest.permission.CAMERA) -> {
+                    view?.let {
+                        Snackbar.make(
+                            it,
+                            "Precisamos da permissão de uso da câmera.",
+                            Snackbar.LENGTH_INDEFINITE
+                        ).setAction("Pedir permissão", {
+                            val intent = Intent()
+                            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                            val uri = Uri.fromParts("package", requireActivity().packageName, null)
+                            intent.data = uri
+                            startActivity(intent)
+                        }).show()
+                    }
+                }
+                else -> {}
+            }
+
+        }
 }

@@ -25,8 +25,9 @@ class MovieDetailsFragment : Fragment() {
             container,
             false)
         binding.lifecycleOwner = this
-
         binding.movieViewModel = viewModel
+
         return binding.root
+
     }
 }

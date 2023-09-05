@@ -2,19 +2,62 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data/>
+    <data>
+        <import type="com.santos.awesomemovieapp.DataState"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
-        android:name="com.santos.awesomemovieapp.MovieFragment"
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.santos.awesomemovieapp.MovieViewModel" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:background="#787878"
-        android:backgroundTint="#787878"
-        app:layoutManager="LinearLayoutManager"
-        tools:context=".movieHome.MovieFragment"
-        tools:listitem="@layout/fragment_item" />
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:name="com.santos.awesomemovieapp.MovieFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:background="#787878"
+            android:backgroundTint="#787878"
+            app:layoutManager="LinearLayoutManager"
+            tools:context=".movieHome.MovieFragment"
+            tools:listitem="@layout/fragment_item"
+            android:visibility="@{viewModel.dataStateLiveData == DataState.SUCCESS ? View.VISIBLE : View.GONE }"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.dataStateLiveData == DataState.LOADING ? View.VISIBLE : View.GONE }">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/design_default_color_primary"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.dataStateLiveData == DataState.ERROR ? View.VISIBLE : View.GONE }">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/error_msg"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </LinearLayout>
 
 </layout>
