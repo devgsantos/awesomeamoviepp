@@ -40,7 +40,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@drawable/homem_aranha" />
+                    app:srcUrl="@{movieItem.getPosterUrl}" />
 
                 <TextView
                     android:id="@+id/movie_title"

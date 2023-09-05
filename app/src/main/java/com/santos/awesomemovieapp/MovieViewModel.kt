@@ -4,9 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.santos.awesomemovieapp.MovieDetails.MovieDetails
-import com.santos.awesomemovieapp.MovieHome.MovieService
+import com.santos.awesomemovieapp.movieHome.MovieService
 import com.santos.awesomemovieapp.data.Movie
 import com.santos.awesomemovieapp.data.MovieResponse
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,9 +33,13 @@ class MovieViewModel: ViewModel() {
         get() = _dataStateLiveData
     private val _dataStateLiveData = MutableLiveData<DataState>()
 
+    val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+
     private val retrofit = Retrofit.Builder()
         .baseUrl(ApiCredentials.baseApiUrl)
-        .addConverterFactory(MoshiConverterFactory.create())
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
 
     private val movieService = retrofit.create(MovieService::class.java)

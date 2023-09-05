@@ -1,4 +1,4 @@
-package com.santos.awesomemovieapp.MovieHome
+package com.santos.awesomemovieapp.movieHome
 
 import com.santos.awesomemovieapp.data.MovieResponse
 import retrofit2.Call
@@ -16,7 +16,7 @@ interface MovieService {
     @GET("now_playing")
     fun getMovieItem(
         @Query("api_key") apikey: String,
-        @Query("movie_id") movie_id: String
+        @Query("movie_id") movieId: String
     )
 
     fun getMovieImage(

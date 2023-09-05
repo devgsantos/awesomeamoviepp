@@ -14,7 +14,7 @@
         android:background="#787878"
         android:backgroundTint="#787878"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".MovieHome.MovieFragment"
+        tools:context=".movieHome.MovieFragment"
         tools:listitem="@layout/fragment_item" />
 
 </layout>

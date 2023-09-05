@@ -1,4 +1,4 @@
-package com.santos.awesomemovieapp.MovieHome
+package com.santos.awesomemovieapp.movieHome
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater

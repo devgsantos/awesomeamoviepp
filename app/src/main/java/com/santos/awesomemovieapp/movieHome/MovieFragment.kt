@@ -1,4 +1,4 @@
-package com.santos.awesomemovieapp.MovieHome
+package com.santos.awesomemovieapp.movieHome
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -21,7 +20,6 @@ import android.provider.Settings
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
-import com.santos.awesomemovieapp.DataState
 import com.santos.awesomemovieapp.MovieViewModel
 import com.santos.awesomemovieapp.R
 
