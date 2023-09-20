@@ -24,6 +24,7 @@ class MovieDetailsFragment : Fragment() {
             R.layout.fragment_movie_details,
             container,
             false)
+
         binding.lifecycleOwner = this
         binding.movieViewModel = viewModel
 

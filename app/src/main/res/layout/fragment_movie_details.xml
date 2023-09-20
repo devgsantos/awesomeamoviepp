@@ -22,7 +22,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
-            android:text="@{movieViewModel.moviewDetailsLiveData.title}"
+            android:text='@{movieViewModel.moviewDetailsLiveData.title ?? "Título indisponível"}'
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,8 @@
             android:src="@drawable/homem_aranha"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcUrl="@{movieViewModel.moviewDetailsLiveData.imageUrl}"/>
 
         <TextView
             android:id="@+id/movie_details_description"
@@ -60,7 +61,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
-            android:text="@string/movie_description_placeholder"
+            android:text="@{movieViewModel.moviewDetailsLiveData.overview}"
             android:textAlignment="viewStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

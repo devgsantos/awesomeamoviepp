@@ -1,4 +1,4 @@
-package com.santos.awesomemovieapp
+package com.santos.awesomemovieapp.data
 
 class ApiCredentials {
     companion object {

@@ -33,7 +33,12 @@ data class Movie(
 ) {
 
     val imageBaseUrl = "https://image.tmdb.org/t/p/w500"
-
+    fun getImageUrl(): String {
+        return when {
+            posterPath?.isNotEmpty() == true -> "https://image.tmdb.org/t/p/original/" + backdropPath!!
+            else -> ""
+        }
+    }
 
     fun getContent(): String {
         return when {

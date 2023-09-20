@@ -1,4 +1,4 @@
-package com.santos.awesomemovieapp
+package com.santos.awesomemovieapp.data
 
 enum class DataState {
     LOADING,

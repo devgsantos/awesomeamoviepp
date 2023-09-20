@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.santos.awesomemovieapp.DataState"/>
+        <import type="com.santos.awesomemovieapp.data.DataState"/>
 
         <import type="android.view.View"/>
 
