@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.santos.awesomemovieapp.api.MovieService
 import com.santos.awesomemovieapp.data.ApiCredentials
 import com.santos.awesomemovieapp.data.DataState
+import com.santos.awesomemovieapp.data.Event
 import com.santos.awesomemovieapp.data.Movie
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -26,7 +27,7 @@ class MovieViewModel: ViewModel() {
 
     val navigateToDetailsLiveData
         get() = _navigateToDetailsLiveData
-    private val _navigateToDetailsLiveData = MutableLiveData<Unit>()
+    private val _navigateToDetailsLiveData = MutableLiveData<Event<Unit>>()
 
     val dataStateLiveData: LiveData<DataState>
         get() = _dataStateLiveData
@@ -42,6 +43,7 @@ class MovieViewModel: ViewModel() {
         .build()
 
     private val movieService = retrofit.create(MovieService::class.java)
+
 
     init {
         _dataStateLiveData.postValue(DataState.LOADING)
@@ -68,9 +70,7 @@ class MovieViewModel: ViewModel() {
         val movieDetails = _movieListLiveData.value?.get(position)
         movieDetails?.let {
             _movieDetailsLiveData.postValue(it)
-            _navigateToDetailsLiveData.postValue(Unit)
+            _navigateToDetailsLiveData.postValue(Event(Unit))
         }
-
-
     }
 }

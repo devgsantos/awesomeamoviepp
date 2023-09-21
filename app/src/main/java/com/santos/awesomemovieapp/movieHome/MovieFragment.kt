@@ -16,6 +16,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.Settings
+import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
@@ -45,6 +46,12 @@ class MovieFragment : Fragment(), MovieItemListener {
         binding.lifecycleOwner = this
 
         adapter = MyMovieRecyclerViewAdapter(this)
+
+        adapter.setOnScrollListener(object: OnScrollListener {
+            override fun onScrolled() {
+
+            }
+        })
 
         recycleView.apply {
             this.adapter = this@MovieFragment.adapter
@@ -92,8 +99,11 @@ class MovieFragment : Fragment(), MovieItemListener {
         })
 
         viewModel.navigateToDetailsLiveData.observe(viewLifecycleOwner, Observer {
-            val action = MovieFragmentDirections.actionMovieFragmentToMovieDetailsFragment()
-            findNavController().navigate(action)
+            it.getContentIfNotHandled()?.let {
+                val action = MovieFragmentDirections.actionMovieFragmentToMovieDetailsFragment()
+                findNavController().navigate(action)
+            }
+
         })
     }
 
@@ -128,4 +138,5 @@ class MovieFragment : Fragment(), MovieItemListener {
             }
 
         }
+
 }

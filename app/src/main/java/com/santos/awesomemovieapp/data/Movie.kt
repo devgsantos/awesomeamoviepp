@@ -2,6 +2,7 @@ package com.santos.awesomemovieapp.data
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 
 @JsonClass(generateAdapter = true)
 data class Movie(
@@ -33,12 +34,6 @@ data class Movie(
 ) {
 
     val imageBaseUrl = "https://image.tmdb.org/t/p/w500"
-    fun getImageUrl(): String {
-        return when {
-            posterPath?.isNotEmpty() == true -> "https://image.tmdb.org/t/p/original/" + backdropPath!!
-            else -> ""
-        }
-    }
 
     fun getContent(): String {
         return when {
@@ -54,6 +49,18 @@ data class Movie(
 
     fun getPosterUrl(): String {
         return "$imageBaseUrl$posterPath"
+    }
+
+    fun getImageUrl(): String {
+        return when {
+            posterPath?.isNotEmpty() == true -> "https://image.tmdb.org/t/p/original/" + posterPath!!
+            else -> ""
+        }
+    }
+
+    val list = listOf("https://image.tmdb.org/t/p/original/" + backdropPath, "https://image.tmdb.org/t/p/original/" + posterPath)
+    fun getCarouselImages() = list.map {
+        CarouselItem(imageUrl = it)
     }
 
 }
