@@ -106,6 +106,7 @@ dependencies {
 
     ksp "com.google.dagger:hilt-compiler:2.44"
     implementation "androidx.room:room-runtime:2.5.2"
+    implementation "androidx.room:room-ktx:2.5.2"
     ksp "androidx.room:room-compiler:2.5.2"
 
     implementation "com.github.bumptech.glide:glide:4.16.0"
