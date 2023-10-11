@@ -18,9 +18,9 @@ import com.squareup.moshi.Json
 )
 data class ProductionCountry(
     @PrimaryKey(autoGenerate = true)
-    val countryId: Int?,
+    var countryId: Int?,
     @Json(name="iso_3166_1" ) var iso31661 : String? = null,
     @Json(name="name"       ) var name     : String? = null,
     @ColumnInfo(index = true)
-    val movieId: Int?
+    var movieId: Int?
 )

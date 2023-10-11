@@ -21,6 +21,6 @@ data class Genre(
     @Json(name="id"   ) var id   : Int?    = null,
     @Json(name="name" ) var name : String? = null,
     @ColumnInfo(index = true)
-    val movieId: Int?
+    var movieId: Int?
 
 )

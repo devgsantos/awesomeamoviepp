@@ -15,7 +15,6 @@ class Movie() {
     @Json(name="id"                    ) var id                  : Int?                           = null
     @Json(name="adult"                 ) var adult               : Boolean?                       = null
     @Json(name="backdrop_path"         ) var backdropPath        : String?                        = null
-    @Json(name="belongs_to_collection" ) var belongsToCollection : BelongsToCollection?           = BelongsToCollection()
     @Json(name="budget"                ) var budget              : Int?                           = null
     @Ignore
     @Json(name="genres"                ) var genres              : List<Genre>              = arrayListOf()
@@ -48,7 +47,6 @@ class Movie() {
         id                  : Int?,
         adult               : Boolean?,
         backdropPath        : String?,
-        belongsToCollection : BelongsToCollection?,
         budget              : Int?,
         genres              : List<Genre>,
         homepage            : String?,
@@ -75,7 +73,6 @@ class Movie() {
         this.id = id
         this.adult = adult
         this.backdropPath = backdropPath
-        this.belongsToCollection = belongsToCollection
         this.budget = budget
         this.genres = genres
         this.homepage = homepage
@@ -123,8 +120,7 @@ class Movie() {
         }
     }
 
-    val list = listOf("https://image.tmdb.org/t/p/original/" + backdropPath, "https://image.tmdb.org/t/p/original/" + posterPath)
-    fun getCarouselImages() = list.map {
+    fun getCarouselImages() = listOf("https://image.tmdb.org/t/p/original/" + backdropPath, "https://image.tmdb.org/t/p/original/" + posterPath).map {
         CarouselItem(imageUrl = it)
     }
 
