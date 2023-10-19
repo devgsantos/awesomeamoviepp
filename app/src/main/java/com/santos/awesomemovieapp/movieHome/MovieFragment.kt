@@ -16,7 +16,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.Settings
-import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
@@ -92,7 +91,7 @@ class MovieFragment : Fragment(), MovieItemListener {
 
     fun initObservers() {
 
-        viewModel.moviewListLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.movieListLiveData.observe(viewLifecycleOwner, Observer {
             it?.let{
                 adapter.updateData(it)
             }
