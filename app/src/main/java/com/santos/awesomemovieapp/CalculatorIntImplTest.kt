@@ -4,13 +4,13 @@ package com.santos.awesomemovieapp
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Test
-class CalculatorTest {
+class CalculatorIntImplTest {
 
-    lateinit var calculator: Calculator
+    lateinit var calculatorIntImpl: CalculatorIntImpl
 
     @Before
     fun setup() {
-        calculator = Calculator()
+        calculatorIntImpl = CalculatorIntImpl()
     }
 
     @Test
@@ -19,8 +19,10 @@ class CalculatorTest {
         val number1 = 2
         val number2 = 3
 
+        val operation = Operations.SUM
+
         //When
-        val result = calculator.sum(number1, number2)
+        val result = calculatorIntImpl.operation(operation, number1, number2)
 
         //Then
         assertThat(result).isEqualTo(5)
@@ -32,8 +34,10 @@ class CalculatorTest {
         val number1 = 2
         val number2 = 3
 
+        val operation = Operations.MULTIPLY
+
         //When
-        val result = calculator.multiply(number1, number2)
+        val result = calculatorIntImpl.operation(operation, number1, number2)
 
         //Then
         assertThat(result).isEqualTo(6)

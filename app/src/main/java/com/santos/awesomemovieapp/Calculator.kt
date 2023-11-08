@@ -1,5 +1,6 @@
 package com.santos.awesomemovieapp
 
+import kotlin.jvm.Throws
 
 enum class Operations {
     SUM,
@@ -7,12 +8,22 @@ enum class Operations {
 }
 
 class Calculator {
+    private val calcInt = CalculatorIntImpl()
+    private val calcFloat = CalculatorFloatImpl()
 
-    fun operation(operations: Operations, number1: Int, number2: Int) =
-        when(operations) {
-            Operations.SUM -> sum(number1, number2)
-            Operations.MULTIPLY -> multiply(number1, number2)
+    fun calculate(operation: Operations, number1: Number, number2: Number): Number {
+        return if (number1 is Int && number2 is Int) {
+            when(operation) {
+                Operations.SUM -> calcInt.sum(number1, number2)
+                Operations.MULTIPLY -> calcInt.multiply(number1, number2)
+            }
+        } else if(number1 is Float && number2 is Float) {
+            when(operation) {
+                Operations.SUM -> calcFloat.sum(number1, number2)
+                Operations.MULTIPLY -> calcFloat.multiply(number1, number2)
+            }
+        } else {
+            throw Exception("Invalid operation")
         }
-    fun sum(number1: Int, number2: Int) = number1 + number2
-    fun multiply(number1: Int, number2: Int) = number1 * number2
+    }
 }
