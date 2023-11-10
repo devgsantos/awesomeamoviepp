@@ -22,7 +22,7 @@ class CalculatorIntImplTest {
         val operation = Operations.SUM
 
         //When
-        val result = calculatorIntImpl.operation(operation, number1, number2)
+        val result = calculatorIntImpl.sum(number1, number2)
 
         //Then
         assertThat(result).isEqualTo(5)
@@ -37,7 +37,7 @@ class CalculatorIntImplTest {
         val operation = Operations.MULTIPLY
 
         //When
-        val result = calculatorIntImpl.operation(operation, number1, number2)
+        val result = calculatorIntImpl.multiply(number1, number2)
 
         //Then
         assertThat(result).isEqualTo(6)

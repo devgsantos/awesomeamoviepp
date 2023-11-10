@@ -7,10 +7,10 @@ enum class Operations {
     MULTIPLY
 }
 
-class Calculator {
-    private val calcInt = CalculatorIntImpl()
-    private val calcFloat = CalculatorFloatImpl()
-
+class Calculator(
+    private val calcInt: CalculatorIntImpl,
+    private val calcFloat: CalculatorFloatImpl
+) {
     fun calculate(operation: Operations, number1: Number, number2: Number): Number {
         return if (number1 is Int && number2 is Int) {
             when(operation) {
