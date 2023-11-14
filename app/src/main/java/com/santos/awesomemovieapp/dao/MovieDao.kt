@@ -5,17 +5,25 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.santos.awesomemovieapp.data.Movie
 import com.santos.awesomemovieapp.data.MovieWithAllProperties
+import com.santos.awesomemovieapp.data.SpokenLanguage
 import com.santos.awesomemovieapp.database.MovieDatabase
+import javax.inject.Inject
 
 @Dao
 abstract class MovieDao(
-    private val movieDatabase: MovieDatabase
+    private var movieDatabase: MovieDatabase
 ): BaseDao<Movie> {
+    @Inject
+    lateinit var genreDao: GenreDao
 
-    private val genreDao =  movieDatabase.genreDao()
-    private val productionCompanyDao = movieDatabase.productionCompanyDao()
-    private val productionCountryDao =  movieDatabase.productionCountryDao()
-    private val spokenLanguageDao = movieDatabase.spokenLanguageDao()
+    @Inject
+    lateinit var productionCompanyDao: ProductionCompanyDao
+
+    @Inject
+    lateinit var productionCountryDao: ProductionCountryDao
+
+    @Inject
+    lateinit var spokenLanguageDao: SpokenLanguageDao
 
     @Transaction
     @Query( "SELECT * FROM movie")

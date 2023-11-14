@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.navGraphViewModels
 import com.santos.awesomemovieapp.MovieViewModel
 import com.santos.awesomemovieapp.R
@@ -14,7 +15,7 @@ import com.santos.awesomemovieapp.databinding.FragmentMovieDetailsBinding
 class MovieDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieDetailsBinding
-    private val viewModel by navGraphViewModels<MovieViewModel>(R.id.movie_graph) { defaultViewModelProviderFactory }
+    private val viewModel by hiltNavGraphViewModels<MovieViewModel>(R.id.movie_graph)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

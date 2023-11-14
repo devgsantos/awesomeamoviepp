@@ -9,19 +9,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Inject
 
-class MovieApiClientDataSource: MovieDataSource {
+class MovieApiClientDataSource @Inject constructor(): MovieDataSource {
 
-    val moshi = Moshi.Builder()
-        .add(KotlinJsonAdapterFactory())
-        .build()
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(ApiCredentials.baseApiUrl)
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .build()
-
-    private val movieService = retrofit.create(MovieService::class.java)
+    @Inject
+    lateinit var movieService: MovieService
 
     override suspend fun getMovieData(): Result<List<Movie>?> =
         withContext(Dispatchers.IO) {

@@ -18,6 +18,7 @@ import android.net.Uri
 import android.provider.Settings
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import com.google.android.material.snackbar.Snackbar
 import com.santos.awesomemovieapp.MovieViewModel
 import com.santos.awesomemovieapp.R
@@ -29,7 +30,8 @@ import com.santos.awesomemovieapp.R
 class MovieFragment : Fragment(), MovieItemListener {
 
     private lateinit var adapter: MyMovieRecyclerViewAdapter
-    private val viewModel by navGraphViewModels<MovieViewModel>(R.id.movie_graph){defaultViewModelProviderFactory}
+    private val viewModel by hiltNavGraphViewModels<MovieViewModel>(R.id.movie_graph)
+
     lateinit var binding: FragmentItemListBinding
 
     override fun onCreateView(

@@ -1,18 +1,18 @@
 package com.santos.awesomemovieapp.datasource
 
 import android.content.Context
+import com.santos.awesomemovieapp.dao.MovieDao
 import com.santos.awesomemovieapp.data.Movie
 import com.santos.awesomemovieapp.data.MovieWithAllProperties
 import com.santos.awesomemovieapp.database.MovieDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class MovieDataBaseDataSource(
-    context: Context
-): MovieDataSource {
+class MovieDataBaseDataSource @Inject constructor(): MovieDataSource {
 
-    private val movieDatabase = MovieDatabase.getDatabase(context)
-    private val movieDao = movieDatabase.movieDao(movieDatabase)
+    @Inject
+    lateinit var movieDao: MovieDao
 
     override suspend fun getMovieData(): Result<List<Movie>?> =
         withContext(Dispatchers.IO) {

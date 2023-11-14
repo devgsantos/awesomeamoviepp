@@ -34,21 +34,4 @@ abstract class MovieDatabase: RoomDatabase() {
     abstract fun productionCountryDao(): ProductionCountryDao
     abstract fun spokenLanguageDao(): SpokenLanguageDao
 
-    companion object{
-        @Volatile
-        private var instance: MovieDatabase? = null
-
-        fun getDatabase(context: Context): MovieDatabase {
-            return instance ?: synchronized(this) {
-                val database = Room.databaseBuilder(
-                    context.applicationContext,
-                    MovieDatabase::class.java,
-                    "movie_data_base"
-                ).build()
-                this.instance = database
-                return database
-            }
-        }
-    }
-
 }

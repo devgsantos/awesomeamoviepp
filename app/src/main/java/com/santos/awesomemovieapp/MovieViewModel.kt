@@ -4,7 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.common.annotations.VisibleForTesting
 import com.santos.awesomemovieapp.api.MovieService
 import com.santos.awesomemovieapp.data.ApiCredentials
 import com.santos.awesomemovieapp.data.DataState
@@ -14,13 +16,18 @@ import com.santos.awesomemovieapp.database.MovieDatabase
 import com.santos.awesomemovieapp.repository.MovieRepository
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Inject
 
-class MovieViewModel( application: Application): AndroidViewModel(application) {
+@HiltViewModel
+class MovieViewModel @Inject constructor(
+    var movieRepository: MovieRepository
+): ViewModel() {
 
     val moviewDetailsLiveData: LiveData<Movie>
         get() = _movieDetailsLiveData
@@ -39,7 +46,7 @@ class MovieViewModel( application: Application): AndroidViewModel(application) {
     private val _dataStateLiveData = MutableLiveData<DataState>()
 
 
-    private val movieRepository = MovieRepository(application)
+//    private val movieRepository = MovieRepository()
 
     init {
         _dataStateLiveData.postValue(DataState.LOADING)
@@ -57,6 +64,7 @@ class MovieViewModel( application: Application): AndroidViewModel(application) {
         }
     }
 
+    @VisibleForTesting
     fun getMovieData() {
         _dataStateLiveData.postValue(DataState.LOADING)
         viewModelScope.launch {
