@@ -51,9 +51,10 @@ class MovieViewModel @Inject constructor(
     init {
         _dataStateLiveData.postValue(DataState.LOADING)
 //      _moviewListLiveData.postValue(PlaceholderContent.ITEMS)
-        CoroutineScope(Dispatchers.IO).launch {
-            getMovieData()
-        }
+        getMovieData()
+//        CoroutineScope(Dispatchers.IO).launch {
+//            getMovieData()
+//        }
     }
 
     fun onMovieSelected(position: Int) {

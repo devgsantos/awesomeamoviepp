@@ -27,8 +27,8 @@ class MovieViewModelTest {
 
     @get:Rule
     val rule = InstantTaskExecutorRule()
-//    val dispatcher = TestCoroutineDispatcher()
-    val dispatcher = StandardTestDispatcher()
+    val dispatcher = TestCoroutineDispatcher()
+//    val dispatcher = StandardTestDispatcher()
 
     val movieRepository: MovieRepository = mockk()
     val appStateObserver: Observer<DataState> = mockk(relaxed = true)
@@ -81,7 +81,7 @@ class MovieViewModelTest {
         val list = listOf(Movie())
         coEvery {
             movieRepository.getMovieData()
-        } returns Result.success(listOf(Movie()))
+        } returns Result.success(list)
         movieViewModel.getMovieData()
         assertThat(movieViewModel.movieListLiveData.value).isEqualTo(list)
     }
@@ -92,7 +92,7 @@ class MovieViewModelTest {
             movieRepository.getMovieData()
         } returns Result.failure(Throwable("Teste"))
         movieViewModel.getMovieData()
-        assertThat(appStateValues).isNull()
+        assertThat(movieViewModel.movieListLiveData.value).isNull()
     }
 
 }
